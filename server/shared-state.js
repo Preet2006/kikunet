@@ -12,10 +12,30 @@ const DEFAULT_STATE = Object.freeze({
   current_location: { label: "Greenfield Apartments", lat: 19.076, lng: 72.8777, source: "simulated" },
   // Kept privately so a denied/unavailable device location can always fall back safely.
   simulated_location: { label: "Greenfield Apartments", lat: 19.076, lng: 72.8777, source: "simulated" },
-  medication_schedule: [],
+  medication_schedule: [
+    { id: "med-1", name: "Vitamin D3", time: "09:00", dosage: "1000 IU" },
+    { id: "med-2", name: "Amlodipine", time: "20:00", dosage: "5 mg" }
+  ],
   companion_session: { intents: {} },
-  daily_journal: null,
-  daily_activity_log: [],
+  daily_journal: {
+    date: new Date().toISOString().slice(0, 10),
+    summary: "Meera spent a quiet morning at home and had breakfast on time. She went for a short walk in the afternoon and seemed to be in a good mood.",
+    sentences: [],
+    source_event_ids: [],
+    generated_at: new Date().toISOString(),
+    model: "seed",
+    fallback: false,
+    stale: false,
+  },
+  daily_activity_log: [
+    {
+      id: "journal-seed-1",
+      date: new Date().toISOString().slice(0, 10),
+      type: "companion_interaction",
+      occurred_at: new Date(Date.now() - 3600000).toISOString(),
+      details: { summary: "Meera mentioned she enjoyed her morning tea." }
+    }
+  ],
   distress_alert: false,
 });
 
